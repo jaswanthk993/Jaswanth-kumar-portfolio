@@ -10,7 +10,6 @@ interface ProjectProps {
   title: string;
   description: string;
   image: string;
-  demoLink?: string;
   githubLink: string;
   technologies: string[];
   category: "all" | "web" | "ai" | "cloud";
@@ -22,7 +21,6 @@ const projectsData: ProjectProps[] = [
     title: "AI Compliance Copilot",
     description: "An intelligent compliance assistant that reads and analyzes policy documents, flags risks and violations, and helps teams stay compliant while building faster.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    demoLink: "https://ai-compliance-copilot.lovable.app/",
     githubLink: "https://github.com/jaswanthk993/ai-compliance-copilot",
     technologies: ["Google Cloud", "Gemini AI", "React", "TypeScript", "LangChain"],
     category: "ai",
@@ -76,7 +74,6 @@ const projectsData: ProjectProps[] = [
     title: "Energy Demand Forecasting using ARIMA",
     description: "Developed a time-series model to predict energy load. Trained ARIMA model with Pandas and statsmodels to forecast energy load accurately.",
     image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80",
-    demoLink: "https://example.com",
     githubLink: "https://github.com/jaswanthk993/energy-demand-forecasting-arima",
     technologies: ["Python", "ARIMA", "Pandas", "statsmodels", "Matplotlib", "Time Series"],
     category: "ai",
@@ -146,14 +143,6 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
               <span>Code</span>
             </a>
           </Button>
-          {project.demoLink && (
-            <Button size="sm" asChild className="bg-primary hover:bg-primary/80">
-              <a href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
-                <ExternalLink size={16} />
-                <span>Demo</span>
-              </a>
-            </Button>
-          )}
         </CardFooter>
       </Card>
     </div>
