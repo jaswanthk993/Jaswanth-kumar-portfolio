@@ -160,11 +160,11 @@ export default function Navbar() {
                 style={{ background: "#22c55e", borderColor: "rgba(2,11,24,0.9)" }} />
             </div>
 
-            <div className="flex flex-col leading-none">
-              <span className="text-white font-bold text-sm tracking-wide group-hover:text-cyan-300 transition-colors duration-200">
+            <div className="flex flex-col leading-none min-w-0">
+              <span className="text-white font-bold text-sm sm:text-base tracking-wide group-hover:text-cyan-300 transition-colors duration-200 truncate">
                 Jaswanth <span className="text-cyan-400">Kumar</span>
               </span>
-              <span className="text-white/35 text-[10px] font-mono tracking-widest">AI ENGINEER</span>
+              <span className="text-white/35 text-[9px] sm:text-[10px] font-mono tracking-widest truncate">AI ENGINEER</span>
             </div>
           </button>
 
@@ -258,12 +258,13 @@ export default function Navbar() {
             onClick={() => setMenuOpen(false)}
           />
           <div
-            className="fixed top-0 right-0 h-full w-72 z-50 flex flex-col md:hidden"
+            className="fixed top-0 right-0 h-[100dvh] w-72 z-50 flex flex-col md:hidden"
             style={{
-              background: "rgba(2,11,24,0.97)",
+              background: "rgba(2,11,24,0.98)",
               borderLeft: "1px solid rgba(34,211,238,0.15)",
-              boxShadow: "-8px 0 40px rgba(0,0,0,0.5)",
-              animation: "nav-slide-in .25s cubic-bezier(0.16,1,0.3,1) forwards",
+              boxShadow: "-8px 0 40px rgba(0,0,0,0.6)",
+              animation: "nav-slide-in .3s cubic-bezier(0.16,1,0.3,1) forwards",
+              isolation: 'isolate'
             }}
           >
             {/* Drawer header */}

@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 /* ── Types ──────────────────────────────────────────────────────────── */
 interface ProjectProps {
@@ -18,12 +17,164 @@ interface ProjectProps {
 /* ── Data ───────────────────────────────────────────────────────────── */
 const projectsData: ProjectProps[] = [
   {
+    title: "Jaswanth Kumar Portfolio",
+    description: "A premium, high-performance portfolio featuring immersive AI-inspired animations, glassmorphic UI, and smooth scrollytelling experiences.",
+    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["React", "Vite", "Tailwind CSS", "Framer Motion", "GSAP"],
+    category: "web",
+  },
+  {
     title: "AI Compliance Copilot",
     description: "An intelligent compliance assistant that reads and analyzes policy documents, flags risks and violations, and helps teams stay compliant while building faster.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
     githubLink: "https://github.com/jaswanthk993/Compliance-Ai",
     technologies: ["Google Cloud", "Gemini AI", "React", "TypeScript", "LangChain"],
     category: "ai",
+  },
+  {
+    title: "Agentic Intelligence Engine",
+    description: "A scalable multi-agent system built with ADK and MCP Toolbox, orchestrating tools, databases, and AI workflows in real time.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["ADK", "MCP Toolbox", "Gemini", "Node.js", "Real-time"],
+    category: "ai",
+  },
+  {
+    title: "Zero Trust AI Vault",
+    description: "A secure AI platform leveraging AlloyDB Row-Level Security to enforce fine-grained access control in agent-driven systems.",
+    image: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["AlloyDB", "Zero Trust", "Security", "AI Agents", "Google Cloud"],
+    category: "ai",
+  },
+  {
+    title: "VectorScale Embedding Pipeline",
+    description: "A high-performance embedding generation system processing 1M+ vectors using AlloyDB and advanced vector search.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["AlloyDB", "Vector Search", "Embeddings", "Python", "Data Engineering"],
+    category: "ai",
+  },
+  {
+    title: "Real-Time Surplus Optimization Engine",
+    description: "An AI-powered sustainability system using Gemini 1.5 Flash and AlloyDB to analyze and optimize surplus data streams.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["Gemini 1.5 Flash", "AlloyDB", "Sustainability", "Analytics", "Cloud Run"],
+    category: "ai",
+  },
+  {
+    title: "Serverless AI Commerce Platform",
+    description: "A full-stack e-commerce application deployed serverlessly on Cloud Run with AlloyDB-backed intelligent workflows.",
+    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["Cloud Run", "AlloyDB", "Serverless", "React", "Node.js"],
+    category: "ai",
+  },
+  {
+    title: "Multi-Agent Kitchen Renovation System",
+    description: "An end-to-end ADK-powered multi-agent application integrating AlloyDB and multiple tools for dynamic task orchestration.",
+    image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["ADK", "AlloyDB", "Multi-Agent", "Task Orchestration", "Python"],
+    category: "ai",
+  },
+  {
+    title: "Patent Intelligence Analyzer",
+    description: "An AI-driven patent analysis agent using vector search and AlloyDB for large-scale semantic document evaluation.",
+    image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["Vector Search", "AlloyDB", "Semantic Analysis", "NLP", "Python"],
+    category: "ai",
+  },
+  {
+    title: "TravelGen AI Planner",
+    description: "A cloud-native travel agent built with ADK and MCP Toolbox, integrating Cloud SQL for intelligent itinerary generation.",
+    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["ADK", "MCP Toolbox", "Cloud SQL", "Itinerary Gen", "React"],
+    category: "ai",
+  },
+  {
+    title: "MCP Data Orchestration Hub",
+    description: "A secure MCP server deployed on Cloud Run enabling structured database tool access across AI agents.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["MCP", "Cloud Run", "Data Hub", "API", "Security"],
+    category: "ai",
+  },
+  {
+    title: "Postgres AI Cloud App",
+    description: "A Postgres-compatible AI application built on Google Cloud with AlloyDB and Cloud Run for scalable deployments.",
+    image: "https://images.unsplash.com/photo-1544383335-cdd80277329d?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["Postgres", "AlloyDB", "Cloud Run", "Google Cloud", "Scalable"],
+    category: "ai",
+  },
+  {
+    title: "Serverless E-Commerce Application on Cloud Run",
+    description: "Built and deployed a full-stack e-commerce application using AlloyDB and Cloud Run with automatic scaling and managed infrastructure.",
+    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["Cloud Run", "AlloyDB", "IAM", "VPC", "Gemini CLI"],
+    category: "cloud",
+  },
+  {
+    title: "Secure MCP Server Deployment on Cloud Run",
+    description: "Deployed a production-ready MCP server on Cloud Run with secure database tool access and authentication controls.",
+    image: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["Cloud Run", "MCP Server", "IAM", "AlloyDB"],
+    category: "cloud",
+  },
+  {
+    title: "AlloyDB Postgres-Compatible AI Application",
+    description: "Configured AlloyDB and built a Postgres-compatible application deployed on Cloud Run with managed connectivity.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["AlloyDB", "Cloud Run", "Cloud IAM"],
+    category: "cloud",
+  },
+  {
+    title: "Cloud SQL Application Deployment",
+    description: "Provisioned Cloud SQL and deployed an application on Cloud Run with secure service-to-database connectivity.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["Cloud SQL", "Cloud Run", "IAM", "Service Accounts"],
+    category: "cloud",
+  },
+  {
+    title: "Large-Scale Embedding Storage with AlloyDB",
+    description: "Implemented scalable vector storage and indexing in AlloyDB handling over one million embeddings efficiently.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["AlloyDB", "Vector Indexing", "Managed Storage"],
+    category: "cloud",
+  },
+  {
+    title: "Zero Trust Row-Level Security Implementation",
+    description: "Configured fine-grained row-level security policies in AlloyDB to enforce least-privilege data access in cloud-native systems.",
+    image: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["AlloyDB RLS", "IAM", "Cloud Run"],
+    category: "cloud",
+  },
+  {
+    title: "BigQuery Agentic Data Access via MCP",
+    description: "Integrated BigQuery with an MCP client enabling structured tool-based query execution in a managed cloud environment.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["BigQuery", "MCP Toolbox", "Cloud Run"],
+    category: "cloud",
+  },
+  {
+    title: "Cloud Run Jobs for Multimodal Data Processing",
+    description: "Built scheduled Cloud Run Jobs to process and prepare multimodal datasets for analytics workflows.",
+    image: "https://images.unsplash.com/photo-1544383335-cdd80277329d?auto=format&fit=crop&w=800&q=80",
+    githubLink: "https://github.com/jaswanthk993",
+    technologies: ["Cloud Run Jobs", "Storage", "IAM"],
+    category: "cloud",
   },
   {
     title: "Static Website Deployment",
@@ -147,83 +298,80 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
 /* ── Main Component ─────────────────────────────────────────────────── */
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState<"all" | "web" | "ai" | "cloud">("all");
-  const filteredProjects = activeFilter === "all" ? projectsData : projectsData.filter(p => p.category === activeFilter);
+
+  const filteredProjects = projectsData.filter(p => {
+    if (activeFilter === "all") return true;
+    return p.category === activeFilter;
+  });
 
   return (
-    <section id="projects" className="section-padding bg-black">
-      <div className="container mx-auto px-4">
+    <section id="projects" className="py-24 bg-black relative isolate">
+      <div className="container mx-auto px-4 relative z-10">
         {/* Heading */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={spring}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-sky-700">My Projects</h2>
-          <motion.div
-            className="w-32 h-1 bg-[#2271FF] mx-auto mb-6"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ ...spring, delay: 0.3 }}
-            viewport={{ once: true }}
-          />
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            A collection of my recent development work, showcasing skills in cloud computing, AI, and full-stack development.
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-600">
+            Featured Projects
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-600 mx-auto mb-6 rounded-full" />
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            A comprehensive showcase of my expertise in AI Agents, Cloud Architecture, and Full-Stack Development.
           </p>
         </motion.div>
 
-        {/* Filter tabs */}
-        <div className="flex justify-center mb-10">
-          <Tabs defaultValue="all" className="w-full max-w-md">
-            <TabsList className="grid grid-cols-4 w-full bg-gray-900/50 border border-gray-800">
-              {(["all", "web", "ai", "cloud"] as const).map(val => (
-                <TabsTrigger
-                  key={val}
-                  value={val}
-                  onClick={() => setActiveFilter(val)}
-                  className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-gray-400"
-                >
-                  {val === "ai" ? "AI/ML" : val.charAt(0).toUpperCase() + val.slice(1)}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-          </Tabs>
+        {/* Filter buttons — Simplified for reliability */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {(["all", "web", "ai", "cloud"] as const).map((val) => (
+            <button
+              key={val}
+              onClick={() => setActiveFilter(val)}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${activeFilter === val
+                ? "bg-primary text-white border-primary shadow-[0_0_15px_rgba(34,113,255,0.4)]"
+                : "bg-gray-900/50 text-gray-400 border-gray-800 hover:border-gray-700 hover:text-gray-200"
+                }`}
+            >
+              {val === "ai" ? "AI/ML" : val.charAt(0).toUpperCase() + val.slice(1)}
+            </button>
+          ))}
         </div>
 
-        {/* Cards grid — staggered cascade */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
-        >
-          {filteredProjects.map((project, i) => (
-            <motion.div
-              key={project.title + activeFilter}
-              variants={{
-                hidden: { opacity: 0, y: 30, scale: 0.95 },
-                visible: { opacity: 1, y: 0, scale: 1, transition: spring },
-              }}
-            >
-              <ProjectCard project={project} />
-            </motion.div>
-          ))}
-        </motion.div>
+        {/* Cards grid — removed 'hidden' initial state to ensure visibility */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.length > 0 ? (
+            filteredProjects.map((project, i) => (
+              <motion.div
+                key={`${project.title}-${activeFilter}-${i}`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+              >
+                <ProjectCard project={project} />
+              </motion.div>
+            ))
+          ) : (
+            <div className="col-span-full text-center py-20 text-gray-500 border border-dashed border-gray-800 rounded-2xl">
+              No projects found in this category.
+            </div>
+          )}
+        </div>
 
         {/* GitHub link */}
         <motion.div
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ ...spring, delay: 0.3 }}
+          className="text-center mt-16"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <Button variant="outline" size="lg" asChild className="border-gray-200 hover:border-[#2271FF] hover:text-[#2271FF]">
+          <Button variant="outline" size="lg" asChild className="border-gray-800 hover:border-primary hover:text-primary bg-gray-900/20 backdrop-blur-sm">
             <a href="https://github.com/jaswanthk993" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-              <Github size={18} />
-              <span>View More on GitHub</span>
+              <Github size={20} />
+              <span>Explore More Repositories</span>
             </a>
           </Button>
         </motion.div>
