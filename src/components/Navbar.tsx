@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react";
 import heroImage from "@/assets/jaswanth-kumar.jpg";
+import Magnetic from "./Magnetic";
 
 const NAV_LINKS = [
   { label: "Home", id: "home" },
@@ -180,21 +181,22 @@ export default function Navbar() {
             <div ref={glowRef} className="nav-cursor-glow" />
 
             {NAV_LINKS.map((link, i) => (
-              <button
-                key={link.id}
-                data-id={link.id}
-                onClick={() => scrollTo(link.id)}
-                className={`nav-link-hover relative px-3 py-1.5 text-sm font-medium rounded-md transition-colors duration-200 cursor-pointer ${activeId === link.id ? "active-nav-link" : ""}`}
-                style={{
-                  color: activeId === link.id ? "#67e8f9" : "rgba(255,255,255,0.55)",
-                  background: "none",
-                  border: "none",
-                  opacity: mounted ? 1 : 0,
-                  animation: mounted ? `nav-link-in .4s ease ${0.1 + i * 0.05}s both` : "none",
-                }}
-              >
-                {link.label}
-              </button>
+              <Magnetic key={link.id} strength={0.15}>
+                <button
+                  data-id={link.id}
+                  onClick={() => scrollTo(link.id)}
+                  className={`nav-link-hover relative px-3 py-1.5 text-sm font-medium rounded-md transition-colors duration-200 cursor-pointer ${activeId === link.id ? "active-nav-link" : ""}`}
+                  style={{
+                    color: activeId === link.id ? "#67e8f9" : "rgba(255,255,255,0.55)",
+                    background: "none",
+                    border: "none",
+                    opacity: mounted ? 1 : 0,
+                    animation: mounted ? `nav-link-in .4s ease ${0.1 + i * 0.05}s both` : "none",
+                  }}
+                >
+                  {link.label}
+                </button>
+              </Magnetic>
             ))}
           </nav>
 
@@ -202,34 +204,34 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <div className="hidden md:flex items-center gap-2">
               {SOCIALS.map(({ Icon, href, label }, i) => (
-                <a key={label} href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-200 text-white/45 hover:text-cyan-300"
-                  style={{
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    opacity: mounted ? 1 : 0,
-                    animation: mounted ? `nav-link-in .4s ease ${0.55 + i * 0.06}s both` : "none",
-                  }}
-                  onMouseEnter={e => {
-                    const el = e.currentTarget as HTMLAnchorElement;
-                    el.style.background = "rgba(34,211,238,0.1)";
-                    el.style.borderColor = "rgba(34,211,238,0.3)";
-                    el.style.boxShadow = "0 0 14px rgba(34,211,238,0.25)";
-                    el.style.transform = "translateY(-1px)";
-                  }}
-                  onMouseLeave={e => {
-                    const el = e.currentTarget as HTMLAnchorElement;
-                    el.style.background = "rgba(255,255,255,0.04)";
-                    el.style.borderColor = "rgba(255,255,255,0.08)";
-                    el.style.boxShadow = "none";
-                    el.style.transform = "translateY(0)";
-                  }}
-                >
-                  <Icon size={15} />
-                </a>
+                <Magnetic key={label} strength={0.2}>
+                  <a href={href}
+                    target={href.startsWith("http") ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-8 h-8 flex items-center justify-center rounded-lg transition-all duration-200 text-white/45 hover:text-cyan-300"
+                    style={{
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      opacity: mounted ? 1 : 0,
+                      animation: mounted ? `nav-link-in .4s ease ${0.55 + i * 0.06}s both` : "none",
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLAnchorElement;
+                      el.style.background = "rgba(34,211,238,0.1)";
+                      el.style.borderColor = "rgba(34,211,238,0.3)";
+                      el.style.boxShadow = "0 0 14px rgba(34,211,238,0.25)";
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLAnchorElement;
+                      el.style.background = "rgba(255,255,255,0.04)";
+                      el.style.borderColor = "rgba(255,255,255,0.08)";
+                      el.style.boxShadow = "none";
+                    }}
+                  >
+                    <Icon size={15} />
+                  </a>
+                </Magnetic>
               ))}
             </div>
 

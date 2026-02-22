@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import heroImage from "@/assets/jaswanth-kumar.jpg";
 import NeuralCanvas from "./NeuralCanvas";
+import Magnetic from "./Magnetic";
 
 /* ── CSS keyframes injected once ─────────────────────────────────────── */
 const CSS_KEYFRAMES = `
@@ -267,14 +268,18 @@ export default function JarvisHero() {
                     {/* CTA */}
                     <div className="flex flex-wrap gap-4 justify-center md:justify-start"
                         style={{ opacity: 0, animation: "fade-in-up .6s ease 1.8s forwards" }}>
-                        <button
-                            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                            className="px-6 py-3 rounded-lg bg-cyan-500 text-white font-semibold tracking-wider text-sm hover:bg-cyan-400 transition-all duration-200 shadow-[0_0_20px_rgba(34,211,238,.4)] hover:shadow-[0_0_30px_rgba(34,211,238,.65)]"
-                        >GET IN TOUCH</button>
-                        <button
-                            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                            className="px-6 py-3 rounded-lg border border-cyan-400/40 text-cyan-300 font-semibold tracking-wider text-sm hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-200"
-                        >VIEW PROJECTS</button>
+                        <Magnetic strength={0.25}>
+                            <button
+                                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                                className="px-6 py-3 rounded-lg bg-cyan-500 text-white font-semibold tracking-wider text-sm hover:bg-cyan-400 transition-all duration-200 shadow-[0_0_20px_rgba(34,211,238,.4)] hover:shadow-[0_0_30px_rgba(34,211,238,.65)]"
+                            >GET IN TOUCH</button>
+                        </Magnetic>
+                        <Magnetic strength={0.25}>
+                            <button
+                                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                                className="px-6 py-3 rounded-lg border border-cyan-400/40 text-cyan-300 font-semibold tracking-wider text-sm hover:border-cyan-400 hover:bg-cyan-400/10 transition-all duration-200"
+                            >VIEW PROJECTS</button>
+                        </Magnetic>
                     </div>
                 </div>
 
