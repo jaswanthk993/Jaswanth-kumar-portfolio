@@ -1,4 +1,4 @@
-# Jaswanth Kumar | AI Engineer Portfolio
+# Jaswanth Kumar | AI & CLOUD Engineer Portfolio
 
 A premium, high-performance portfolio website built with React, TypeScript, and Framer Motion. This project features immersive AI-themed animations, ultra-smooth transitions, and a modern, responsive design tailored for a professional AI & Cloud Engineer.
 
@@ -70,4 +70,4 @@ Follow these steps to set up the project locally:
 
 ---
 
-Developed with 🤖 and ❤️ by Jaswanth Kumar
+Developed by Jaswanth Kumar
