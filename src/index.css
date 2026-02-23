@@ -106,8 +106,43 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
   }
-  
+
+  /* ─── Mobile Touch & Scroll Fixes ────────────────────────────────── */
+  @media (max-width: 767px) {
+    /* Ensure smooth touch scrolling on iOS/Android */
+    html, body {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      overflow-x: hidden;
+    }
+
+    /* Prevent canvas/background layers from stealing touch events */
+    canvas,
+    .fixed {
+      pointer-events: none !important;
+    }
+
+    /* Re-enable pointer events for interactive fixed elements like navbar */
+    header.fixed,
+    header.fixed *,
+    nav,
+    button,
+    a {
+      pointer-events: auto !important;
+    }
+
+    /* Reduce GPU load: disable backdrop-blur on mobile cards */
+    .backdrop-blur-md,
+    .backdrop-blur-xl,
+    .backdrop-blur-sm {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+  }
+
   /* Strong Typography Hierarchy */
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;

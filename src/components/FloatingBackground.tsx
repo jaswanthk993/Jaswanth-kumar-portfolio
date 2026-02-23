@@ -1,14 +1,14 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useRef, Suspense } from 'react';
+import { useRef, Suspense, useState, useEffect } from 'react';
 import * as THREE from 'three';
 
-function FloatingShape({ position, type, color = "#2271ff" }: { 
-  position: [number, number, number]; 
+function FloatingShape({ position, type, color = "#2271ff" }: {
+  position: [number, number, number];
   type: 'sphere' | 'box' | 'torus';
   color?: string;
 }) {
   const meshRef = useRef<THREE.Mesh>(null);
-  
+
   useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.x += 0.005;
@@ -41,7 +41,7 @@ function Scene() {
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} intensity={1} />
       <pointLight position={[-10, -10, -10]} intensity={0.5} color="#4a90ff" />
-      
+
       <FloatingShape position={[-4, 2, -5]} type="sphere" />
       <FloatingShape position={[4, -2, -8]} type="box" color="#3b82f6" />
       <FloatingShape position={[0, 3, -6]} type="torus" />
@@ -53,6 +53,18 @@ function Scene() {
 }
 
 const FloatingBackground = () => {
+  // Skip Three.js canvas on mobile — saves GPU and prevents scroll/touch issues
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (isMobile) return null;
+
   return (
     <div className="fixed inset-0 -z-10 opacity-40">
       <Canvas

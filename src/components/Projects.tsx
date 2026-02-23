@@ -9,7 +9,7 @@ interface ProjectProps {
   title: string;
   description: string;
   image: string;
-  githubLink: string;
+  projectLink: string;
   technologies: string[];
   category: "all" | "web" | "ai" | "cloud";
 }
@@ -20,7 +20,7 @@ const projectsData: ProjectProps[] = [
     title: "Jaswanth Kumar Portfolio",
     description: "A premium, high-performance portfolio featuring immersive AI-inspired animations, glassmorphic UI, and smooth scrollytelling experiences.",
     image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://github.com/jaswanthk993",
     technologies: ["React", "Vite", "Tailwind CSS", "Framer Motion", "GSAP"],
     category: "web",
   },
@@ -28,7 +28,7 @@ const projectsData: ProjectProps[] = [
     title: "AI Compliance Copilot",
     description: "An intelligent compliance assistant that reads and analyzes policy documents, flags risks and violations, and helps teams stay compliant while building faster.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993/Compliance-Ai",
+    projectLink: "https://github.com/jaswanthk993/Compliance-Ai",
     technologies: ["Google Cloud", "Gemini AI", "React", "TypeScript", "LangChain"],
     category: "ai",
   },
@@ -36,7 +36,7 @@ const projectsData: ProjectProps[] = [
     title: "Agentic Intelligence Engine",
     description: "A scalable multi-agent system built with ADK and MCP Toolbox, orchestrating tools, databases, and AI workflows in real time.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/multi-agent-app-toolbox-adk",
     technologies: ["ADK", "MCP Toolbox", "Gemini", "Node.js", "Real-time"],
     category: "ai",
   },
@@ -44,7 +44,7 @@ const projectsData: ProjectProps[] = [
     title: "Zero Trust AI Vault",
     description: "A secure AI platform leveraging AlloyDB Row-Level Security to enforce fine-grained access control in agent-driven systems.",
     image: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/zero-trust-agents-with-alloydb",
     technologies: ["AlloyDB", "Zero Trust", "Security", "AI Agents", "Google Cloud"],
     category: "ai",
   },
@@ -52,7 +52,7 @@ const projectsData: ProjectProps[] = [
     title: "VectorScale Embedding Pipeline",
     description: "A high-performance embedding generation system processing 1M+ vectors using AlloyDB and advanced vector search.",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/embeddings-at-scale-with-alloydb",
     technologies: ["AlloyDB", "Vector Search", "Embeddings", "Python", "Data Engineering"],
     category: "ai",
   },
@@ -60,7 +60,7 @@ const projectsData: ProjectProps[] = [
     title: "Real-Time Surplus Optimization Engine",
     description: "An AI-powered sustainability system using Gemini 1.5 Flash and AlloyDB to analyze and optimize surplus data streams.",
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/gemini-3-flash-on-alloydb-sustainability-app",
     technologies: ["Gemini 1.5 Flash", "AlloyDB", "Sustainability", "Analytics", "Cloud Run"],
     category: "ai",
   },
@@ -68,7 +68,7 @@ const projectsData: ProjectProps[] = [
     title: "Serverless AI Commerce Platform",
     description: "A full-stack e-commerce application deployed serverlessly on Cloud Run with AlloyDB-backed intelligent workflows.",
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/search-app-with-geminicli",
     technologies: ["Cloud Run", "AlloyDB", "Serverless", "React", "Node.js"],
     category: "ai",
   },
@@ -76,7 +76,7 @@ const projectsData: ProjectProps[] = [
     title: "Multi-Agent Kitchen Renovation System",
     description: "An end-to-end ADK-powered multi-agent application integrating AlloyDB and multiple tools for dynamic task orchestration.",
     image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/multi-agent-app-with-adk",
     technologies: ["ADK", "AlloyDB", "Multi-Agent", "Task Orchestration", "Python"],
     category: "ai",
   },
@@ -84,7 +84,7 @@ const projectsData: ProjectProps[] = [
     title: "Patent Intelligence Analyzer",
     description: "An AI-driven patent analysis agent using vector search and AlloyDB for large-scale semantic document evaluation.",
     image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/patent-search-java-adk",
     technologies: ["Vector Search", "AlloyDB", "Semantic Analysis", "NLP", "Python"],
     category: "ai",
   },
@@ -92,7 +92,7 @@ const projectsData: ProjectProps[] = [
     title: "TravelGen AI Planner",
     description: "A cloud-native travel agent built with ADK and MCP Toolbox, integrating Cloud SQL for intelligent itinerary generation.",
     image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/travel-agent-mcp-toolbox-adk",
     technologies: ["ADK", "MCP Toolbox", "Cloud SQL", "Itinerary Gen", "React"],
     category: "ai",
   },
@@ -100,7 +100,7 @@ const projectsData: ProjectProps[] = [
     title: "MCP Data Orchestration Hub",
     description: "A secure MCP server deployed on Cloud Run enabling structured database tool access across AI agents.",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/mcp-toolbox-bigquery-dataset",
     technologies: ["MCP", "Cloud Run", "Data Hub", "API", "Security"],
     category: "ai",
   },
@@ -108,7 +108,7 @@ const projectsData: ProjectProps[] = [
     title: "Postgres AI Cloud App",
     description: "A Postgres-compatible AI application built on Google Cloud with AlloyDB and Cloud Run for scalable deployments.",
     image: "https://images.unsplash.com/photo-1544383335-cdd80277329d?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/quick-alloydb-setup",
     technologies: ["Postgres", "AlloyDB", "Cloud Run", "Google Cloud", "Scalable"],
     category: "ai",
   },
@@ -116,7 +116,7 @@ const projectsData: ProjectProps[] = [
     title: "Serverless E-Commerce Application on Cloud Run",
     description: "Built and deployed a full-stack e-commerce application using AlloyDB and Cloud Run with automatic scaling and managed infrastructure.",
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/gemini-cli-hands-on",
     technologies: ["Cloud Run", "AlloyDB", "IAM", "VPC", "Gemini CLI"],
     category: "cloud",
   },
@@ -124,7 +124,7 @@ const projectsData: ProjectProps[] = [
     title: "Secure MCP Server Deployment on Cloud Run",
     description: "Deployed a production-ready MCP server on Cloud Run with secure database tool access and authentication controls.",
     image: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/codelabs/cloud-run/how-to-deploy-a-secure-mcp-server-on-cloud-run",
     technologies: ["Cloud Run", "MCP Server", "IAM", "AlloyDB"],
     category: "cloud",
   },
@@ -132,7 +132,7 @@ const projectsData: ProjectProps[] = [
     title: "AlloyDB Postgres-Compatible AI Application",
     description: "Configured AlloyDB and built a Postgres-compatible application deployed on Cloud Run with managed connectivity.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/connect-to-alloydb-on-cloudrun",
     technologies: ["AlloyDB", "Cloud Run", "Cloud IAM"],
     category: "cloud",
   },
@@ -140,7 +140,7 @@ const projectsData: ProjectProps[] = [
     title: "Cloud SQL Application Deployment",
     description: "Provisioned Cloud SQL and deployed an application on Cloud Run with secure service-to-database connectivity.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/connect-to-cloudsql-on-cloudrun",
     technologies: ["Cloud SQL", "Cloud Run", "IAM", "Service Accounts"],
     category: "cloud",
   },
@@ -148,7 +148,7 @@ const projectsData: ProjectProps[] = [
     title: "Large-Scale Embedding Storage with AlloyDB",
     description: "Implemented scalable vector storage and indexing in AlloyDB handling over one million embeddings efficiently.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/embeddings-at-scale-with-alloydb",
     technologies: ["AlloyDB", "Vector Indexing", "Managed Storage"],
     category: "cloud",
   },
@@ -156,7 +156,7 @@ const projectsData: ProjectProps[] = [
     title: "Zero Trust Row-Level Security Implementation",
     description: "Configured fine-grained row-level security policies in AlloyDB to enforce least-privilege data access in cloud-native systems.",
     image: "https://images.unsplash.com/photo-1633412802994-5c058f151b66?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/zero-trust-agents-with-alloydb",
     technologies: ["AlloyDB RLS", "IAM", "Cloud Run"],
     category: "cloud",
   },
@@ -164,7 +164,7 @@ const projectsData: ProjectProps[] = [
     title: "BigQuery Agentic Data Access via MCP",
     description: "Integrated BigQuery with an MCP client enabling structured tool-based query execution in a managed cloud environment.",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/mcp-toolbox-bigquery-dataset",
     technologies: ["BigQuery", "MCP Toolbox", "Cloud Run"],
     category: "cloud",
   },
@@ -172,7 +172,7 @@ const projectsData: ProjectProps[] = [
     title: "Cloud Run Jobs for Multimodal Data Processing",
     description: "Built scheduled Cloud Run Jobs to process and prepare multimodal datasets for analytics workflows.",
     image: "https://images.unsplash.com/photo-1544383335-cdd80277329d?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993",
+    projectLink: "https://codelabs.developers.google.com/video-insights-with-cloud-run-jobs",
     technologies: ["Cloud Run Jobs", "Storage", "IAM"],
     category: "cloud",
   },
@@ -180,7 +180,7 @@ const projectsData: ProjectProps[] = [
     title: "Static Website Deployment",
     description: "Hosted a responsive static website on AWS S3 with CloudFront for fast and secure content delivery.",
     image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993/future-ready-talent-project",
+    projectLink: "https://github.com/jaswanthk993/future-ready-talent-project",
     technologies: ["AWS S3", "CloudFront", "Route 53", "HTML", "CSS", "JavaScript"],
     category: "web",
   },
@@ -188,7 +188,7 @@ const projectsData: ProjectProps[] = [
     title: "Cloud-Based Mental Fitness Tracker",
     description: "Built an AI-powered mental wellness tracker using Azure Cognitive Services for sentiment analysis.",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993/Mental-fitness-tracker-with-IBM",
+    projectLink: "https://github.com/jaswanthk993/Mental-fitness-tracker-with-IBM",
     technologies: ["Azure Cognitive Services", "Azure App Services", "Python", "Flask"],
     category: "ai",
   },
@@ -196,7 +196,7 @@ const projectsData: ProjectProps[] = [
     title: "Stock Price Prediction using Cloud AI",
     description: "Developed a machine learning model on Google Cloud AI to predict stock prices in real-time.",
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993/stock-prediction",
+    projectLink: "https://github.com/jaswanthk993/stock-prediction",
     technologies: ["Google Cloud AI", "Vertex AI", "Python", "Flask", "Cloud Storage"],
     category: "cloud",
   },
@@ -204,7 +204,7 @@ const projectsData: ProjectProps[] = [
     title: "AI-Driven Custom Home Design Assistant",
     description: "Developed an intelligent home design assistant that provides personalized design recommendations using AI algorithms.",
     image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993/ai-driven-custom-home-design-assistant",
+    projectLink: "https://github.com/jaswanthk993/ai-driven-custom-home-design-assistant",
     technologies: ["Python", "TensorFlow", "React", "Node.js", "MongoDB"],
     category: "ai",
   },
@@ -212,7 +212,7 @@ const projectsData: ProjectProps[] = [
     title: "AI-Powered PDF Knowledge Assistant",
     description: "Created an intelligent PDF processing system using Google PaLM for document analysis and knowledge extraction.",
     image: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993/ai-powered-pdf-knowledge-assistant-using-google-palm-",
+    projectLink: "https://github.com/jaswanthk993/ai-powered-pdf-knowledge-assistant-using-google-palm-",
     technologies: ["Google PaLM", "Python", "FastAPI", "React", "LangChain"],
     category: "ai",
   },
@@ -220,7 +220,7 @@ const projectsData: ProjectProps[] = [
     title: "Energy Demand Forecasting using ARIMA",
     description: "Developed a time-series model to predict energy load. Trained ARIMA model with Pandas and statsmodels to forecast energy load accurately.",
     image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80",
-    githubLink: "https://github.com/jaswanthk993/energy-demand-forecasting-arima",
+    projectLink: "https://github.com/jaswanthk993/energy-demand-forecasting-arima",
     technologies: ["Python", "ARIMA", "Pandas", "statsmodels", "Matplotlib", "Time Series"],
     category: "ai",
   },
@@ -284,9 +284,9 @@ const ProjectCard = ({ project }: { project: ProjectProps }) => {
         </CardContent>
         <CardFooter className="flex gap-3">
           <Button variant="outline" size="sm" asChild className="border-gray-700 text-gray-300 hover:border-primary hover:text-primary hover:bg-primary/10">
-            <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
-              <Github size={16} />
-              <span>Code</span>
+            <a href={project.projectLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1">
+              {project.projectLink.includes("github.com") ? <Github size={16} /> : <ExternalLink size={16} />}
+              <span>{project.projectLink.includes("github.com") ? "Code" : "View Lab"}</span>
             </a>
           </Button>
         </CardFooter>
@@ -371,7 +371,7 @@ const Projects = () => {
           <Button variant="outline" size="lg" asChild className="border-gray-800 hover:border-primary hover:text-primary bg-gray-900/20 backdrop-blur-sm">
             <a href="https://github.com/jaswanthk993" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
               <Github size={20} />
-              <span>Explore More Repositories</span>
+              <span>Explore More on GitHub</span>
             </a>
           </Button>
         </motion.div>
