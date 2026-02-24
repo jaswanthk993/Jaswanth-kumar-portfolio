@@ -41,7 +41,7 @@ export default function SectionPulse({ children, className = "" }: SectionPulseP
                     obs.disconnect();
                 }
             },
-            { threshold: 0.15 }
+            { threshold: 0.05 }
         );
         obs.observe(ref.current);
         return () => obs.disconnect();

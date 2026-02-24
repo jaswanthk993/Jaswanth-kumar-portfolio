@@ -87,11 +87,16 @@ export default function Navbar() {
       const obs = new IntersectionObserver(
         ([e]) => {
           ratio.set(id, e.intersectionRatio);
-          const winner = NAV_LINKS.map(l => l.id).find(k => (ratio.get(k) ?? 0) > 0.2);
-          if (winner) setActiveId(winner);
+          // Find the section with the highest visible ratio
+          let bestId = "home";
+          let bestRatio = 0;
+          for (const [k, r] of ratio.entries()) {
+            if (r > bestRatio) { bestRatio = r; bestId = k; }
+          }
+          if (bestRatio > 0.05) setActiveId(bestId);
           else if (window.scrollY < 100) setActiveId("home");
         },
-        { threshold: [0, 0.2, 0.5] }
+        { threshold: [0, 0.05, 0.1, 0.2, 0.4, 0.6] }
       );
       obs.observe(el);
       return obs;
@@ -107,9 +112,16 @@ export default function Navbar() {
   };
 
   const scrollTo = (id: string) => {
+    // Immediately update the active state for instant feedback
+    setActiveId(id);
     setMenuOpen(false);
     if (id === "home") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (!el) return;
+    // Offset by navbar height (64px) so section isn't hidden behind the fixed header
+    const navbarHeight = 64;
+    const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   return (
@@ -236,14 +248,18 @@ export default function Navbar() {
             </div>
 
             <button
-              className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-white/70 hover:text-white transition-all duration-200"
-              style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)" }}
+              className="md:hidden w-12 h-12 flex items-center justify-center rounded-lg text-white/70 hover:text-white transition-all duration-200 active:scale-90"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.1)",
+                marginLeft: "8px"
+              }}
               onClick={() => setMenuOpen(v => !v)}
               aria-label="Toggle menu"
             >
               {menuOpen
-                ? <X size={18} style={{ transition: "transform .2s", transform: "rotate(90deg)" }} />
-                : <Menu size={18} />
+                ? <X size={24} style={{ transition: "transform .2s", transform: "rotate(90deg)" }} />
+                : <Menu size={24} />
               }
             </button>
           </div>
@@ -254,22 +270,22 @@ export default function Navbar() {
       {menuOpen && (
         <>
           <div
-            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
+            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-md md:hidden"
             onClick={() => setMenuOpen(false)}
+            style={{ animation: "nav-fade-in .3s ease-out forwards" }}
           />
           <div
             className="fixed top-0 right-0 h-[100dvh] w-72 z-50 flex flex-col md:hidden"
             style={{
-              background: "rgba(2,11,24,0.98)",
-              borderLeft: "1px solid rgba(34,211,238,0.15)",
-              boxShadow: "-8px 0 40px rgba(0,0,0,0.6)",
-              animation: "nav-slide-in .3s cubic-bezier(0.16,1,0.3,1) forwards",
-              isolation: 'isolate'
+              background: "rgba(2,11,24,0.99)",
+              borderLeft: "1px solid rgba(34,211,238,0.2)",
+              boxShadow: "-10px 0 50px rgba(0,0,0,0.8)",
+              animation: "nav-slide-in .4s cubic-bezier(0.16, 1, 0.3, 1) forwards",
             }}
           >
             {/* Drawer header */}
-            <div className="flex items-center gap-2.5 px-5 h-16 border-b border-white/5">
-              <div className="relative w-8 h-8 shrink-0">
+            <div className="flex items-center gap-2.5 px-5 h-20 border-b border-white/5">
+              <div className="relative w-10 h-10 shrink-0">
                 <div className="absolute inset-0 rounded-full"
                   style={{ background: "conic-gradient(from 0deg,#06b6d4,#3b82f6,#8b5cf6,#06b6d4)", animation: "nav-ring-spin 3s linear infinite", padding: 1.5 }} />
                 <div className="absolute inset-[2px] rounded-full overflow-hidden">
@@ -277,11 +293,15 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="flex-1 flex flex-col leading-none">
-                <span className="text-white font-bold text-sm">Jaswanth <span className="text-cyan-400">Kumar</span></span>
-                <span className="text-white/35 text-[10px] font-mono tracking-widest">AI ENGINEER</span>
+                <span className="text-white font-bold text-base">Jaswanth <span className="text-cyan-400">Kumar</span></span>
+                <span className="text-white/35 text-[11px] font-mono tracking-widest">AI ENGINEER</span>
               </div>
-              <button onClick={() => setMenuOpen(false)} className="text-white/50 hover:text-white transition-colors">
-                <X size={18} />
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="w-10 h-10 flex items-center justify-center text-white/50 hover:text-white transition-colors"
+                aria-label="Close menu"
+              >
+                <X size={22} />
               </button>
             </div>
 
@@ -290,20 +310,24 @@ export default function Navbar() {
               {NAV_LINKS.map((link, i) => (
                 <button
                   key={link.id}
-                  onClick={() => scrollTo(link.id)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all duration-200 cursor-pointer group"
+                  onClick={() => {
+                    // Close menu slightly before scrolling to avoid visual glitches
+                    setMenuOpen(false);
+                    setTimeout(() => scrollTo(link.id), 50);
+                  }}
+                  className="flex items-center gap-4 px-5 py-4 rounded-xl text-left transition-all duration-200 cursor-pointer group active:bg-cyan-500/10"
                   style={{
-                    background: activeId === link.id ? "rgba(34,211,238,0.08)" : "transparent",
-                    border: activeId === link.id ? "1px solid rgba(34,211,238,0.2)" : "1px solid transparent",
-                    color: activeId === link.id ? "#67e8f9" : "rgba(255,255,255,0.6)",
-                    animation: `nav-fade-up .28s ease ${i * 0.04}s both`,
+                    background: activeId === link.id ? "rgba(34,211,238,0.1)" : "transparent",
+                    border: activeId === link.id ? "1px solid rgba(34,211,238,0.25)" : "1px solid transparent",
+                    color: activeId === link.id ? "#67e8f9" : "rgba(255,255,255,0.7)",
+                    animation: `nav-fade-up .3s ease ${i * 0.05}s both`,
                   }}
                 >
-                  <span className="w-1.5 h-1.5 rounded-full shrink-0 transition-colors"
-                    style={{ background: activeId === link.id ? "#06b6d4" : "rgba(255,255,255,0.15)" }} />
-                  <span className="font-medium text-sm">{link.label}</span>
+                  <span className="w-2 h-2 rounded-full shrink-0 transition-colors"
+                    style={{ background: activeId === link.id ? "#06b6d4" : "rgba(255,255,255,0.2)" }} />
+                  <span className="font-semibold text-sm tracking-wide">{link.label}</span>
                   {activeId === link.id && (
-                    <span className="ml-auto text-cyan-400/50 text-xs font-mono">●</span>
+                    <span className="ml-auto text-cyan-400/60 text-xs font-mono">●</span>
                   )}
                 </button>
               ))}

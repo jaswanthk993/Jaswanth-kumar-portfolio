@@ -226,7 +226,7 @@ export default function JarvisHero() {
             <NeuralCircuit />
 
             {/* Layout */}
-            <div className="relative z-10 container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12 py-24 md:py-0">
+            <div className="relative z-10 container mx-auto px-4 md:px-12 flex flex-col md:flex-row items-center justify-center md:justify-between gap-8 md:gap-12 py-20 md:py-0">
 
                 {/* ── Left: Text ─────────────────────────────────────────────── */}
                 <div className="w-full md:w-1/2 text-center md:text-left">
@@ -249,7 +249,7 @@ export default function JarvisHero() {
                     <div className="mb-10 space-y-2 min-h-[90px]">
                         {roles.map((role, i) => (
                             <div key={role}
-                                className="font-mono text-base sm:text-lg tracking-widest text-white/55 flex items-center gap-3"
+                                className="font-mono text-base sm:text-lg tracking-widest text-white/55 flex items-center gap-3 justify-center md:justify-start"
                                 style={{
                                     opacity: displayed[i].length > 0 ? 1 : 0,
                                     transition: "opacity .3s ease",
@@ -284,10 +284,10 @@ export default function JarvisHero() {
                 </div>
 
                 {/* ── Right: PhotoOrb ─────────────────────────────────────────── */}
-                <div className="w-full md:w-1/2 flex justify-center">
+                <div className="w-full md:w-1/2 flex justify-center order-first md:order-last">
                     <motion.div
                         className="relative flex items-center justify-center"
-                        style={{ scale: photoScale, width: 440, height: 440 } as React.CSSProperties}
+                        style={{ scale: photoScale, width: isMobile ? 280 : 440, height: isMobile ? 280 : 440 } as React.CSSProperties}
                     >
 
 
@@ -298,19 +298,19 @@ export default function JarvisHero() {
                         >
                             {/* Ring 1 */}
                             <div className="absolute rounded-full border border-cyan-400/25"
-                                style={{ width: 310, height: 310, animation: "ring-cw 18s linear infinite" }}>
+                                style={{ width: isMobile ? 200 : 310, height: isMobile ? 200 : 310, animation: "ring-cw 18s linear infinite" }}>
                                 <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,.9)]" />
                             </div>
                             {/* Ring 2 */}
                             <div className="absolute rounded-full border border-blue-400/20"
-                                style={{ width: 365, height: 365, animation: "ring-ccw 26s linear infinite" }}>
+                                style={{ width: isMobile ? 240 : 365, height: isMobile ? 240 : 365, animation: "ring-ccw 26s linear infinite" }}>
                                 <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,.9)]" />
                             </div>
                             {/* Ring 3 dashed */}
                             <div className="absolute rounded-full"
-                                style={{ width: 415, height: 415, border: "1px dashed rgba(34,211,238,.12)", animation: "ring-cw 42s linear infinite" }} />
+                                style={{ width: isMobile ? 270 : 415, height: isMobile ? 270 : 415, border: "1px dashed rgba(34,211,238,.12)", animation: "ring-cw 42s linear infinite" }} />
                             {/* Orbiting dots */}
-                            {[0, 72, 144, 216, 288].map((deg, i) => (
+                            {!isMobile && [0, 72, 144, 216, 288].map((deg, i) => (
                                 <div key={i} className="absolute rounded-full"
                                     style={{
                                         width: 338, height: 338,

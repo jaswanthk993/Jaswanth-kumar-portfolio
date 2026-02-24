@@ -11,14 +11,13 @@ import Certificates from "@/components/Certificates";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingBackground from "@/components/FloatingBackground";
-import CustomCursor from "@/components/CustomCursor";
+
 import AmbientGrid from "@/components/AmbientGrid";
 import SectionPulse from "@/components/SectionPulse";
 import FooterNeural from "@/components/FooterNeural";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { motion, useScroll, useSpring } from "framer-motion";
-import { HoverAnimation } from "@/components/ui/hover-animation";
 
 /* ── Shared ultra-smooth spring config ────────────────────────────────── */
 const sectionTransition = {
@@ -34,20 +33,34 @@ function SmoothSection({
   particles = 10,
   className = "",
   delay = 0,
+  isMobile = false,
 }: {
   children: React.ReactNode;
   particles?: number;
   className?: string;
   delay?: number;
+  isMobile?: boolean;
 }) {
+  // On mobile: skip whileInView animations entirely — render sections visible immediately
+  if (isMobile) {
+    return (
+      <SectionPulse>
+        <div className={`relative ${className}`}>
+          <AmbientGrid particleCount={Math.floor(particles / 2)} />
+          {children}
+        </div>
+      </SectionPulse>
+    );
+  }
+
   return (
     <SectionPulse>
       <motion.div
-        className={`relative overflow-hidden ${className}`}
+        className={`relative ${className}`}
         style={{ willChange: "transform, opacity" }}
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.05, margin: "-40px" }}
+        viewport={{ once: true, amount: 0.01, margin: "0px 0px -5% 0px" }}
         transition={{ ...sectionTransition, delay }}
       >
         <AmbientGrid particleCount={particles} />
@@ -58,6 +71,15 @@ function SmoothSection({
 }
 
 const Index = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 60,
@@ -80,8 +102,6 @@ const Index = () => {
       {/* 3D Floating Background */}
       <FloatingBackground />
 
-      {/* Custom AI Cursor */}
-      <CustomCursor />
 
       {/* Progress Bar — ultra-smooth spring */}
       <motion.div
@@ -89,44 +109,42 @@ const Index = () => {
         style={{ scaleX }}
       />
 
-      <HoverAnimation variant="lift" className="sticky top-0 z-40">
-        <Navbar />
-      </HoverAnimation>
+      <Navbar />
 
       {/* Hero — full neural canvas already built in */}
       <JarvisHero />
 
       {/* ── Content sections with smooth springs ──────────────────── */}
 
-      <SmoothSection particles={10}>
+      <SmoothSection particles={10} isMobile={isMobile}>
         <About />
       </SmoothSection>
 
-      <SmoothSection particles={10}>
+      <SmoothSection particles={10} isMobile={isMobile}>
         <Skills />
       </SmoothSection>
 
-      <SmoothSection particles={14} className="bg-slate-950">
+      <SmoothSection particles={14} className="bg-slate-950" isMobile={isMobile}>
         <Projects />
       </SmoothSection>
 
-      <SmoothSection particles={8}>
+      <SmoothSection particles={8} isMobile={isMobile}>
         <Experience />
       </SmoothSection>
 
-      <SmoothSection particles={8}>
+      <SmoothSection particles={8} isMobile={isMobile}>
         <Education />
       </SmoothSection>
 
-      <SmoothSection particles={8}>
+      <SmoothSection particles={8} isMobile={isMobile}>
         <Achievements />
       </SmoothSection>
 
-      <SmoothSection particles={8}>
+      <SmoothSection particles={8} isMobile={isMobile}>
         <Certificates />
       </SmoothSection>
 
-      <SmoothSection particles={10}>
+      <SmoothSection particles={10} isMobile={isMobile}>
         <Contact />
       </SmoothSection>
 

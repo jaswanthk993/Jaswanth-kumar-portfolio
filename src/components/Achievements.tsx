@@ -157,7 +157,7 @@ const Achievements = () => {
                       variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { ...spring, delay: 0.2 } } }}
                     >
                       <Button asChild className="gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow-sm hover:shadow-glow transition-all duration-300">
-                        <a href="https://lnkd.in/g4pVH5AN" target="_blank" rel="noopener noreferrer">
+                        <a href="https://ai-compliance-copilot-293913338390.us-west1.run.app" target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-4 h-4" /> Live Prototype
                         </a>
                       </Button>
